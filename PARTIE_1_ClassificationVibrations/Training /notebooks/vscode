@@ -1,0 +1,15 @@
+The notebook performs the following steps:
+
+1-Load the datasets
+
+2-Preprocess the data
+
+3-Split the gesture sequences
+
+4-Train a machine learning model
+
+5-Evaluate the model accuracy
+
+6-Export the model to TensorFlow Lite format
+
+Generated output: gesture_model.tflite
