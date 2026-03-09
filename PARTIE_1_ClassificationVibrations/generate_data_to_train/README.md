@@ -5,7 +5,7 @@ Guide rapide pour créer et déployer un modèle de reconnaissance de gestes sur
 ## 📋 Prérequis
 
 - Arduino Nano 33 BLE Sense
-- Python 3.8-3.11 (TensorFlow ne supporte pas Python 3.12+)
+- Python 3.8-3.11 (TensorFlow ne supporte pas Python 3.12+) (with these depandecies pyserial,numpy,pandas,scikit-learn,tensorflow,matplotlib)
 - Arduino IDE
 - VS Code
 
@@ -85,4 +85,5 @@ analyze/
 - **Erreur port série** : Fermer le Moniteur série Arduino avant d'exécuter `serial_data_to_csv.py`
 - **TensorFlow ne s'installe pas** : Utiliser Python 3.11 dans un environnement virtuel
 - **Modèle ne fonctionne pas** : Vérifier que `model.h` est bien dans `classify_imu/`
+
 
