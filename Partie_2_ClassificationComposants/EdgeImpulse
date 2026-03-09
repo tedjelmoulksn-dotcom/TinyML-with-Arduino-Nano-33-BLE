@@ -1,0 +1,14 @@
+link to the edgeimpulse project : electronics
+https://studio.edgeimpulse.com/public/883894/live
+Instructions:
+Typical steps include:
+
+1. Creating a new Edge Impulse project
+2. Uploading the dataset
+3. Labeling images
+4. Creating the impulse pipeline
+5. Training the model
+6. Evaluating the model
+7. Exporting the Arduino library
+
+The training itself is performed entirely on the **Edge Impulse platform**.
