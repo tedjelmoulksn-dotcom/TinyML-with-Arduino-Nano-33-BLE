@@ -1,1 +1,118 @@
+## System Overview
+
+This project demonstrates a **TinyML pipeline running on an Arduino Nano 33 BLE**.  
+The system learns to recognize **motion gestures (Circle vs Square)** using the IMU sensor and a machine learning model deployed on the microcontroller.
+
+---
+
+## Project Workflow
+User draws gesture with Arduino
+│
+▼
+IMU Sensor (Accelerometer + Gyroscope)
+│
+▼
+Data Collection (Serial → CSV)
+│
+▼
+Dataset Creation
+│
+▼
+Model Training (Jupyter Notebook)
+│
+▼
+TensorFlow Lite Model (.tflite)
+│
+▼
+Model Conversion → model.h
+│
+▼
+Arduino Deployment
+│
+▼
+Real-time Gesture Inference
+│
+▼
+Prediction Output (Circle / Square probabilities)
+
+---
+
+## Step-by-Step Explanation
+
+### 1. Data Collection
+
+The Arduino Nano 33 BLE collects motion data using its **IMU sensor**.
+
+Each sample contains:aX, aY, aZ, gX, gY, gZ
+
+These values represent:
+
+- Accelerometer data (X, Y, Z)
+- Gyroscope data (X, Y, Z)
+
+The data is sent to a computer via **Serial communication** and saved as CSV files.
+
+Example datasets:
+circle.csv
+square.csv
+
+Each gesture contains **119 samples**.
+
+---
+
+### 2. Model Training
+
+The collected datasets are used in a **Jupyter Notebook** to train a machine learning model.
+
+Training steps:
+
+1. Load the datasets
+2. Preprocess the data
+3. Split gestures into sequences
+4. Train a classifier
+5. Evaluate accuracy
+6. Export the trained model
+
+The model is exported as: gesture_model.tflite
+
+
+---
+
+### 3. Model Conversion
+
+Arduino cannot directly use `.tflite` files.  
+The model is converted into a **C header file**:
+model.h
+
+This file contains the model stored as a **byte array** that can be compiled with the Arduino code.
+
+---
+
+### 4. Embedded Inference
+
+The model is integrated into the Arduino program.
+
+The system:
+
+1. Reads IMU data in real time
+2. Applies the same preprocessing used during training
+3. Runs inference using TensorFlow Lite for Microcontrollers
+4. Outputs gesture probabilities
+
+Example output:
+Circle: 0.87
+Square: 0.13
+
+The gesture with the highest probability is considered the detected motion.
+
+---
+
+## Key Technologies
+
+- Arduino Nano 33 BLE
+- IMU Sensor (Accelerometer + Gyroscope)
+- Python & Jupyter Notebook
+- TensorFlow Lite
+- TinyML
+
 
