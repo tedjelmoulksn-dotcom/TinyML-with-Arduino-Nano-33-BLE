@@ -2,7 +2,7 @@
 
 A project outline for deploying compact machine-learning inference on a microcontroller. Two application tracks are described: inertial vibration recognition and camera-based electronic-component recognition.
 
-**Current repository status:** the published material consists of this README and the [project overview](Overview). Training code, datasets, exported models, firmware and performance measurements are not yet included.
+**Current repository status:** project-definition phase. This README and the [project overview](Overview) describe the application tracks and the acquisition-to-inference workflow that will guide implementation.
 
 ## Track 1 — IMU vibration recognition
 
@@ -27,7 +27,7 @@ A camera is an additional hardware requirement; the board name alone does not es
 | Validation | Confusion matrix, held-out acquisitions and robustness to changed conditions |
 | Integration | Firmware acquisition/inference interface and host reporting format |
 
-These are planned verification objectives, not published results.
+These objectives define the acceptance criteria for the implementation phase.
 
 ## Next implementation steps
 
@@ -45,7 +45,7 @@ cd TinyML-with-Arduino-Nano-33-BLE
 git switch test
 ```
 
-The current default branch is `test`. There is no runnable deployment procedure yet.
+The current default branch is `test`. The implementation sequence is described above, starting with acquisition hardware and a reproducible dataset.
 
 ## Licence
 
