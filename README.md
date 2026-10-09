@@ -1,6 +1,10 @@
 # TinyML on Arduino Nano 33 BLE — Project Roadmap
 
-A project outline for deploying compact machine-learning inference on a microcontroller. Two application tracks are described: inertial vibration recognition and camera-based electronic-component recognition.
+Project roadmap for IMU and image classification on Arduino Nano 33 BLE.
+
+![Proposed workflow — project-definition phase.](assets/project-overview.svg)
+
+*Proposed workflow — project-definition phase.*
 
 **Current repository status:** project-definition phase. This README and the [project overview](Overview) describe the application tracks and the acquisition-to-inference workflow that will guide implementation.
 
