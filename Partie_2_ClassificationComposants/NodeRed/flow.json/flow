@@ -1,0 +1,25 @@
+Archi:
+Arduino
+   ↓
+Serial communication
+   ↓
+Node-RED serial input
+   ↓
+Function node (count components)
+   ↓
+Dashboard display
+
+
+The Node-RED flow performs the following steps:
+
+Serial Input
+
+The serial in node reads messages sent by the Arduino through the serial port.
+
+Function Node
+
+A function node parses the received message and increments the corresponding counter.
+
+Dashboard Display
+
+The updated counters are displayed on the Node-RED dashboard in real time.
