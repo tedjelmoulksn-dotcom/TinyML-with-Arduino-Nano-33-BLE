@@ -1,1 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="478" viewBox="0 0 960 478" role="img" aria-labelledby="title desc"><title id="title">TinyML deployment roadmap</title><desc id="desc">Proposed workflow — project-definition phase. Acquisition: IMU windows or camera frames. Training and evaluation: Preprocessing · independent evaluation data. Model export: TensorFlow Lite / Edge Impulse workflow. Embedded integration: Tensor arena · firmware · memory / latency checks</desc><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#536d83"/></marker></defs><rect width="960" height="478" rx="18" fill="#f4f7fb"/><text x="48" y="48" font-family="sans-serif" font-size="26" font-weight="700" fill="#132b42">TinyML deployment roadmap</text><text x="48" y="78" font-family="sans-serif" font-size="16" fill="#52677b">Proposed workflow — project-definition phase</text><path d="M456 173 L499 173" fill="none" stroke="#536d83" stroke-width="2" marker-end="url(#arrow)"/><path d="M708 234 L252 295" fill="none" stroke="#536d83" stroke-width="2" marker-end="url(#arrow)"/><path d="M456 361 L499 361" fill="none" stroke="#536d83" stroke-width="2" marker-end="url(#arrow)"/><rect x="48" y="112" width="408" height="122" rx="12" fill="#ffffff" stroke="#c8d6e3"/><rect x="48" y="112" width="6" height="122" rx="3" fill="#176b9c"/><text x="70" y="146" font-family="sans-serif" font-size="19" font-weight="700" fill="#17354f">Acquisition</text><text x="70" y="177" font-family="sans-serif" font-size="15" fill="#475f74">IMU windows or camera frames</text><rect x="504" y="112" width="408" height="122" rx="12" fill="#ffffff" stroke="#c8d6e3"/><rect x="504" y="112" width="6" height="122" rx="3" fill="#176b9c"/><text x="526" y="146" font-family="sans-serif" font-size="19" font-weight="700" fill="#17354f">Training and evaluation</text><text x="526" y="177" font-family="sans-serif" font-size="15" fill="#475f74">Preprocessing · independent evaluation data</text><rect x="48" y="300" width="408" height="122" rx="12" fill="#ffffff" stroke="#c8d6e3"/><rect x="48" y="300" width="6" height="122" rx="3" fill="#176b9c"/><text x="70" y="334" font-family="sans-serif" font-size="19" font-weight="700" fill="#17354f">Model export</text><text x="70" y="365" font-family="sans-serif" font-size="15" fill="#475f74">TensorFlow Lite / Edge Impulse workflow</text><rect x="504" y="300" width="408" height="122" rx="12" fill="#ffffff" stroke="#c8d6e3"/><rect x="504" y="300" width="6" height="122" rx="3" fill="#176b9c"/><text x="526" y="334" font-family="sans-serif" font-size="19" font-weight="700" fill="#17354f">Embedded integration</text><text x="526" y="365" font-family="sans-serif" font-size="15" fill="#475f74">Tensor arena · firmware · memory / latency</text><text x="526" y="388" font-family="sans-serif" font-size="15" fill="#475f74">checks</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="470" viewBox="0 0 1100 470" role="img" aria-labelledby="title desc">
+<title id="title">TinyML acquisition and inference workflows</title><desc id="desc">IMU samples pass through CSV collection and TensorFlow training to Arduino inference. Camera data passes through Edge Impulse inference and serial reception; Node-RED counting and dashboard nodes remain to be integrated.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#64748b"/></marker></defs>
+<rect width="1100" height="470" rx="18" fill="#f8fafc"/>
+<g font-family="DejaVu Sans,Arial,sans-serif"><text x="34" y="43" font-size="24" fill="#0f172a" font-weight="bold">TinyML: from acquisition to embedded predictions</text>
+<text x="34" y="70" font-size="14" fill="#475569">Architecture derived from the uploaded code and model artifacts</text>
+<text x="34" y="111" font-size="16" fill="#0369a1" font-weight="bold">01 · IMU motion experiment</text>
+<rect x="34" y="128" width="220" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="49" y="155" font-size="15" fill="#0f172a" font-weight="bold">Nano 33 BLE + IMU</text>
+<text x="49" y="180" font-size="12" fill="#475569">119 samples × 6 channels</text>
+<text x="49" y="199" font-size="12" fill="#475569">Accelerometer + gyroscope</text>
+<rect x="298" y="128" width="220" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="313" y="155" font-size="15" fill="#0f172a" font-weight="bold">Host acquisition</text>
+<text x="313" y="180" font-size="12" fill="#475569">Serial → CSV · 9600 baud</text>
+<text x="313" y="199" font-size="12" fill="#475569">Recorded gesture datasets</text>
+<rect x="562" y="128" width="220" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="577" y="155" font-size="15" fill="#0f172a" font-weight="bold">TensorFlow training</text>
+<text x="577" y="180" font-size="12" fill="#475569">714 → 50 → 15 → 2</text>
+<text x="577" y="199" font-size="12" fill="#475569">TFLite export → model.h</text>
+<rect x="826" y="128" width="240" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="841" y="155" font-size="15" fill="#0f172a" font-weight="bold">Arduino inference</text>
+<text x="841" y="180" font-size="12" fill="#475569">TensorFlow Lite Micro</text>
+<text x="841" y="199" font-size="12" fill="#475569">Two class probabilities</text>
+<path d="M254 175 H289" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M518 175 H553" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M782 175 H817" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="34" y="273" font-size="16" fill="#047857" font-weight="bold">02 · Electronic-component camera experiment</text>
+<rect x="34" y="291" width="175" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="49" y="318" font-size="15" fill="#0f172a" font-weight="bold">OV7670 camera</text>
+<text x="49" y="343" font-size="12" fill="#475569">Capture and resize</text>
+<text x="49" y="362" font-size="12" fill="#475569">Image input</text>
+<rect x="238" y="291" width="210" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="253" y="318" font-size="15" fill="#0f172a" font-weight="bold">Nano 33 BLE</text>
+<text x="253" y="343" font-size="12" fill="#475569">Edge Impulse export</text>
+<text x="253" y="362" font-size="12" fill="#475569">run_classifier</text>
+<rect x="477" y="291" width="160" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="492" y="318" font-size="15" fill="#0f172a" font-weight="bold">USB serial</text>
+<text x="492" y="343" font-size="12" fill="#475569">115200 baud</text>
+<text x="492" y="362" font-size="12" fill="#475569">Classifier output</text>
+<rect x="666" y="291" width="190" height="95" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+<text x="681" y="318" font-size="15" fill="#0f172a" font-weight="bold">Node-RED input</text>
+<text x="681" y="343" font-size="12" fill="#475569">Serial node available</text>
+<text x="681" y="362" font-size="12" fill="#475569">Select device port</text>
+<rect x="885" y="291" width="181" height="95" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="900" y="318" font-size="15" fill="#0f172a" font-weight="bold">Counters + UI</text>
+<text x="900" y="343" font-size="12" fill="#475569">Missing in exported flow</text>
+<text x="900" y="362" font-size="12" fill="#475569">Integration remaining</text>
+<path d="M209 338 H229" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M448 338 H468" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M637 338 H657" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M856 338 H876" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="34" y="429" font-size="13" fill="#475569">Source and artifact availability does not establish verified end-to-end hardware performance.</text></g></svg>

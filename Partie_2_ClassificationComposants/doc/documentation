@@ -1,0 +1,205 @@
+# System Documentation
+
+## Overview
+
+This project implements a TinyML system capable of detecting and counting electronic components using an **Arduino Nano 33 BLE**, an **OV7670 camera**, and a **machine learning model trained with Edge Impulse**.
+
+The system captures images of components, classifies them using a neural network running directly on the Arduino, and sends the detected class to **Node-RED**, where the number of detected components is counted and displayed on a dashboard.
+
+---
+
+# 1. Hardware Setup
+
+## Components Used
+
+- Arduino Nano 33 BLE
+- OV7670 Camera module
+- Computer running Node-RED
+- USB cable
+
+---
+
+## OV7670 Camera Wiring
+
+The OV7670 camera is connected directly to the Arduino Nano 33 BLE using digital pins.
+
+Below is an example of the typical connections.
+
+| OV7670 Pin | Arduino Nano 33 BLE |
+|-------------|---------------------|
+| VCC | 3.3V |
+| GND | GND |
+| SIOD | SDA |
+| SIOC | SCL |
+| VSYNC | Digital Pin |
+| HREF | Digital Pin |
+| PCLK | Digital Pin |
+| XCLK | Digital Pin |
+| D0-D7 | Digital Pins |
+
+The camera captures frames that are later resized and processed before being sent to the machine learning model.
+
+---
+
+# 2. Edge Impulse Model
+
+## Dataset Creation
+
+Images of electronic components were collected and labeled using the **Edge Impulse Studio** platform.
+
+The dataset contains different classes such as:
+
+- LED
+- Resistor
+- Capacitor
+
+Each image is labeled manually in Edge Impulse to train the classification model.
+
+---
+
+## Training the Model
+
+The training pipeline in Edge Impulse consists of three main steps:
+
+1. **Image preprocessing**
+2. **Feature extraction**
+3. **Neural network classification**
+
+After training, the model is evaluated using validation data to ensure it correctly classifies the components.
+
+---
+
+## Exporting the Model for Arduino
+
+Once the model is trained, Edge Impulse allows exporting it as an **Arduino library**.
+
+This library contains:
+
+- the trained machine learning model
+- preprocessing functions
+- inference code
+- helper functions for running the model on the Arduino
+
+The library is then imported into the Arduino IDE.
+
+---
+
+# 3. Arduino Implementation
+
+The Arduino code performs the following steps:
+
+1. Initialize the OV7670 camera
+2. Capture an image frame
+3. Resize and preprocess the image
+4. Run the Edge Impulse classifier
+5. Determine the most probable class
+6. Send the detected class through the serial port
+
+Example message sent to Node-RED:
+
+```text
+CLASS:LED
+CLASS:Resistor
+CLASS:Capacitor
+CLASS:None
+
+
+
+  Installing Node-RED
+
+Node-RED runs on top of Node.js.
+
+First install Node.js, then install Node-RED with:
+
+npm install -g node-red
+  node-red
+  Importing the Flow
+
+To load the provided flow:
+
+1-Open Node-RED
+
+2-Click the menu icon (top right)
+
+3-Select Import
+
+4-Choose the file flows.json
+
+5-Deploy the flow
+
+
+  Node-RED Flow Structure
+
+The flow is composed of several nodes:
+
+Arduino → Serial Input → Function Node → Dashboard
+Serial Node
+
+The serial node reads the data sent by the Arduino.
+
+
+  Function Node
+
+The function node parses the received message and updates counters.
+
+Example logic:
+
+if CLASS:LED → increment LED counter
+
+if CLASS:Resistor → increment resistor counter
+
+if CLASS:Capacitor → increment capacitor counter
+
+if CLASS:None → no object detected
+
+The counters are stored in the Node-RED context memory.
+
+Dashboard
+
+The Node-RED dashboard displays the counters in real time.
+
+The following values are shown:
+
+LED Count
+
+Resistor Count
+
+Capacitor Count
+
+Detection Status
+
+The dashboard can be accessed at:
+
+http://localhost:1880/ui
+5. System Workflow
+
+The complete system works as follows:
+
+Electronic Component
+        ↓
+OV7670 Camera
+        ↓
+Arduino Nano 33 BLE
+        ↓
+Edge Impulse Model
+        ↓
+Predicted Class
+        ↓
+Serial Communication
+        ↓
+Node-RED
+        ↓
+Component Counters Dashboard
+6. Result
+
+The system is able to:
+
+detect electronic components using a camera
+
+classify them using an embedded machine learning model
+
+send the prediction to a monitoring system
+
+count detected components in real time
+
+This demonstrates how TinyML can run computer vision tasks directly on microcontrollers with minimal hardware.
