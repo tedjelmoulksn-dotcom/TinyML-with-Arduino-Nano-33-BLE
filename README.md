@@ -1,56 +1,18 @@
-# TinyML on Arduino Nano 33 BLE — Project Roadmap
+# TinyML on Arduino Nano 33 BLE
 
-Project roadmap for IMU and image classification on Arduino Nano 33 BLE.
+Project roadmap for embedded classification on Arduino Nano 33 BLE. Two application tracks are explored: recognising IMU vibration patterns and classifying electronic components from images.
 
-![Proposed workflow — project-definition phase.](assets/project-overview.svg)
+## Repository guide
 
-*Proposed workflow — project-definition phase.*
-
-**Current repository status:** project-definition phase. This README and the [project overview](Overview) describe the application tracks and the acquisition-to-inference workflow that will guide implementation.
-
-## Track 1 — IMU vibration recognition
-
-The proposed pipeline collects inertial measurements, forms fixed-length windows, extracts or normalises features, trains a classifier and exports a TensorFlow Lite model for microcontroller inference.
-
-Important implementation parameters include sampling frequency, window length, overlap, input units and training/inference preprocessing consistency. Train/test partitions should separate acquisition sessions where possible to avoid leakage between neighbouring windows.
-
-## Track 2 — Electronic-component recognition
-
-The overview proposes camera-based classification of components such as LEDs, resistors and capacitors, with Edge Impulse and a Node-RED interface for displaying counts.
-
-A camera is an additional hardware requirement; the board name alone does not establish an integrated imaging pipeline. Image dimensions, colour format, model operators and inference memory requirements must be specified before deployment.
-
-## Embedded engineering targets
-
-| Area | What to establish |
+| Location | Contents |
 |---|---|
-| Model representation | Input/output tensor shapes, supported operators and quantisation parameters |
-| RAM budget | Tensor arena, input buffers and runtime peak usage |
-| Flash budget | Model size, runtime code and application footprint |
-| Timing | Acquisition period, preprocessing cost and measured inference latency |
-| Validation | Confusion matrix, held-out acquisitions and robustness to changed conditions |
-| Integration | Firmware acquisition/inference interface and host reporting format |
+| [Overview](Overview) | Application ideas and acquisition-to-inference workflow |
+| [assets/](assets/) | Project overview diagram |
 
-These objectives define the acceptance criteria for the implementation phase.
+## Getting started
 
-## Next implementation steps
+Read the overview to choose an application, then define the acquisition hardware, dataset and model evaluation procedure. The default branch is `test`.
 
-1. Select one application and define the acquisition hardware.
-2. Commit a reproducible data schema and capture script.
-3. Add a training/export pipeline with fixed evaluation partitions.
-4. Publish firmware and a documented memory/timing measurement procedure.
-5. Compare host-model and on-device predictions using the same inputs.
+## Project context
 
-## Access
-
-```bash
-git clone https://github.com/tedjelmoulksn-dotcom/TinyML-with-Arduino-Nano-33-BLE.git
-cd TinyML-with-Arduino-Nano-33-BLE
-git switch test
-```
-
-The current default branch is `test`. The implementation sequence is described above, starting with acquisition hardware and a reproducible dataset.
-
-## Licence
-
-No project-wide licence has been defined.
+The repository currently contains planning material. Firmware, training code and trained models have not yet been added. The image track requires an external camera.
